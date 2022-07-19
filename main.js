@@ -5,7 +5,7 @@ var Library = function(){
     collection.push(book)
   }
   var checkOutBook = function(book){
-    if (collection.filter(function(e) { return e.getAttribute('title') === book.getAttribute('title'); }).length > 0) {
+    if (collection.includes(book)) {
       /* collection contains the element we're looking for */
       book.setAttribute("checkedOut", true)
     }
@@ -15,7 +15,7 @@ var Library = function(){
   }
 
   var returnBook = function(book){
-    if ((collection.filter(function(e) { return e.getAttribute('title') === book.getAttribute('title'); }).length > 0) && book.getAttribute('checkedOut')) {
+    if (collection.includes(book) && book.getAttribute('checkedOut')) {
       /* collection contains the element we're looking for */
       book.setAttribute("checkedOut", false)
     }
