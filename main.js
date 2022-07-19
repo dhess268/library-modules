@@ -1,1 +1,45 @@
 // write your code here to make the tests pass
+var Library = function(){
+  var collection = []
+  var addBook = function(book){
+    collection.push(book)
+  }
+  var checkOutBook = function(book){
+    if (collection.filter(function(e) { return e.getAttribute('title') === book.getAttribute('title'); }).length > 0) {
+      /* collection contains the element we're looking for */
+      book.setAttribute("checkedOut", true)
+    }
+    else{
+      console.log('This book is not in the library collection; therefore it cannot be checked out')
+    }
+  }
+
+
+  return {
+    addBook: addBook,
+    checkOutBook: checkOutBook
+  }
+}
+
+var Book = function(title, author) {
+  var attributes = {
+    checkedOut: false,
+    title: title,
+    author: author
+  }
+  var getAttribute = function(attribute){
+    if(attributes.hasOwnProperty(attribute)){
+      return attributes[attribute]
+    }
+  }
+
+  var setAttribute = function(attribute, newValue){
+    if(attributes.hasOwnProperty(attribute)){
+      attributes[attribute] = newValue
+    }
+  }
+  return {
+    getAttribute: getAttribute,
+    setAttribute: setAttribute
+  }
+}
