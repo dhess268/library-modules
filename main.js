@@ -14,10 +14,19 @@ var Library = function(){
     }
   }
 
-
+  var returnBook = function(book){
+    if ((collection.filter(function(e) { return e.getAttribute('title') === book.getAttribute('title'); }).length > 0) && book.getAttribute('checkedOut')) {
+      /* collection contains the element we're looking for */
+      book.setAttribute("checkedOut", false)
+    }
+    else{
+      console.log('This book is not in the library collection; therefore it cannot be checked out')
+    }
+  }
   return {
-    addBook: addBook,
-    checkOutBook: checkOutBook
+    addBook,
+    checkOutBook,
+    returnBook
   }
 }
 
